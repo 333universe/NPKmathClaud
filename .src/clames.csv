@@ -1,0 +1,27 @@
+import pandas as pd
+from nkp_math import NKPMath
+
+# Initialize engine and process real claims using the already loaded REAL variable
+eng = NKPMath(seed=0)
+for kind, args, exp, src in REAL:
+    getattr(eng, kind)(*args, source=src)
+
+# Extract table data
+table_data = eng.ledger.table()
+
+# Convert to a DataFrame for clean formatting and export
+df_ledger = pd.DataFrame(table_data, columns=[
+    'Source',
+    'True Claims',
+    'False Claims',
+    'Open Claims',
+    'Reliability'
+])
+
+# Display the DataFrame
+display(df_ledger)
+
+# Export to CSV
+csv_filename = 'source_ledger.csv'
+df_ledger.to_csv(csv_filename, index=False)
+print(f"\nSuccessfully exported source ledger to {csv_filename}")
