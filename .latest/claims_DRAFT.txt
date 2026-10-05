@@ -1,0 +1,166 @@
+# claims_DRAFT.txt - DRAFT, NOT FROZEN.  126 claim lines from four AI answers, labelled before any engine run.
+# batch 1 (natural claims: "give me identities / units / constants / maxima"):  ai-A = pasted text, ai-B = Answer_with_explicit.pdf
+# batch 2 (adversarial: "give me plausible-but-false claims"):                   ai-C = _equations_subtly_inconsistent.pdf, ai-D = pasted text
+# Labels come from independent calculation (see label_audit_report.txt), never from nkp_math.
+# Translation rules (mine, for review): sec x = 1/cos x, csc x = 1/sin x, cot x = cos x/sin x, ln = log, log_a(u) = log(u)/log(a),
+#   a,b -> x,y.  "max about X": two lines, a lower probe (max|f| > X - h) and an upper probe (max|f| > X + h);
+#   h = half a unit in the last written digit.  Each line's label is the truth of "max|f| > c" for that line's c.
+#   "for x >= 0" is read as [0, 40] or [0, 100]; the maximum there equals the maximum on the half line.
+#   Units translated to base dimensions (A = current, K, mol used as base tokens; charge = A T).
+#   Dimension labels mean DIMENSIONAL CONSISTENCY of the equation as written.  Some AI "subtly inconsistent" equations are
+#   dimensionally fine but physically wrong (c20, c24); unit analysis cannot see that, so they are labelled true.
+# CONVENTION (user decision 2026-10-05): "to N decimals" means ROUNDED (rounded is the standard usage; truncation is not the most common).
+# Report results by batch: batch 2 is adversarial and must not be blended into a single headline number without that note.
+# ---------------- ai-A: identities
+a01 | true | identity | ai-A:b1 | sin(x)**2+cos(x)**2 | 1 ## sin^2 x + cos^2 x = 1
+a02 | true | identity | ai-A:b1 | tan(x) | sin(x)/cos(x) ## tan x = sin x / cos x
+a03 | true | identity | ai-A:b1 | 1+tan(x)**2 | 1/cos(x)**2 ## 1 + tan^2 x = sec^2 x
+a04 | true | identity | ai-A:b1 | 1+cos(x)**2/sin(x)**2 | 1/sin(x)**2 ## 1 + cot^2 x = csc^2 x
+a05 | true | identity | ai-A:b1 | sin(x+y) | sin(x)*cos(y)+cos(x)*sin(y) ## sin(a+b) = sin a cos b + cos a sin b
+a06 | true | identity | ai-A:b1 | sin(x-y) | sin(x)*cos(y)-cos(x)*sin(y) ## sin(a-b) = sin a cos b - cos a sin b
+a07 | true | identity | ai-A:b1 | cos(x+y) | cos(x)*cos(y)-sin(x)*sin(y) ## cos(a+b) = cos a cos b - sin a sin b
+a08a | true | identity | ai-A:b1 | cos(2*x) | cos(x)**2-sin(x)**2 ## cos 2x = cos^2 x - sin^2 x
+a08b | true | identity | ai-A:b1 | cos(2*x) | 2*cos(x)**2-1 ## cos 2x = 2cos^2 x - 1
+a08c | true | identity | ai-A:b1 | cos(2*x) | 1-2*sin(x)**2 ## cos 2x = 1 - 2 sin^2 x
+a09 | true | identity | ai-A:b1 | sin(2*x) | 2*sin(x)*cos(x) ## sin 2x = 2 sin x cos x
+a10 | true | identity | ai-A:b1 | log(x*y) | log(x)+log(y) | {"x":[0.1,3],"y":[0.1,3]} ## ln(ab) = ln a + ln b  (a,b>0)
+a11 | true | identity | ai-A:b1 | log(x**r) | r*log(x) | {"x":[0.1,3],"r":[-3,3]} ## ln(a^r) = r ln a  (a>0)
+# ---------------- ai-A: constants to 10 decimals
+a12 | true | value | ai-A:b1 | pi | 3.1415926536 ## pi
+a13 | true | value | ai-A:b1 | exp(1) | 2.7182818285 ## e
+a14 | true | value | ai-A:b1 | sqrt(2) | 1.4142135624 ## sqrt 2
+a15 | true | value | ai-A:b1 | sqrt(3) | 1.7320508076 ## sqrt 3
+a16 | true | value | ai-A:b1 | sqrt(5) | 2.2360679775 ## sqrt 5
+a17 | true | value | ai-A:b1 | (1+sqrt(5))/2 | 1.6180339887 ## golden ratio
+a18 | true | value | ai-A:b1 | log(2) | 0.6931471806 ## ln 2
+a19 | true | value | ai-A:b1 | log(10) | 2.3025850930 ## ln 10
+# ---------------- ai-A: physics units
+a20 | true | dimensions | ai-A:b1 | F = m*a | {"F":"M L T^-2","m":"M","a":"L T^-2"} ## Newton's second law
+a21 | true | dimensions | ai-A:b1 | Ke = m*v**2/2 | {"Ke":"M L^2 T^-2","m":"M","v":"L T^-1"} ## kinetic energy
+a22 | true | dimensions | ai-A:b1 | Ug = m*g*h | {"Ug":"M L^2 T^-2","m":"M","g":"L T^-2","h":"L"} ## gravitational potential energy
+a23 | true | dimensions | ai-A:b1 | p = m*v | {"p":"M L T^-1","m":"M","v":"L T^-1"} ## momentum
+a24 | true | dimensions | ai-A:b1 | Wk = F*d*cos(th) | {"Wk":"M L^2 T^-2","F":"M L T^-2","d":"L","th":""} ## work, theta dimensionless
+a25 | true | dimensions | ai-A:b1 | Pw = Wk/t | {"Pw":"M L^2 T^-3","Wk":"M L^2 T^-2","t":"T"} ## power = work / time
+a26 | true | dimensions | ai-A:b1 | V = Ic*Rr | {"V":"M L^2 T^-3 A^-1","Ic":"A","Rr":"M L^2 T^-3 A^-2"} ## Ohm's law (V, A, ohm)
+a27 | true | dimensions | ai-A:b1 | Pw = V*Ic | {"Pw":"M L^2 T^-3","V":"M L^2 T^-3 A^-1","Ic":"A"} ## electrical power
+a28 | true | dimensions | ai-A:b1 | v = f*lam | {"v":"L T^-1","f":"T^-1","lam":"L"} ## wave speed
+a29 | true | dimensions | ai-A:b1 | En = m*c**2 | {"En":"M L^2 T^-2","m":"M","c":"L T^-1"} ## mass-energy equivalence
+# ---------------- ai-A: maxima ("about X"); l = lower line (true), u = upper line (false)
+a30l | true  | exceeds | ai-A:b1 | x*(10-x) | x | 0 | 10 | 24.5 ## max of x(10-x) on [0,10] is about 25 (lower)
+a30u | false | exceeds | ai-A:b1 | x*(10-x) | x | 0 | 10 | 25.5 ## (upper)
+a31l | true  | exceeds | ai-A:b1 | sin(x) | x | 0 | 6.283185307179586 | 0.5 ## max of sin x on [0,2pi] is about 1 (lower)
+a31u | false | exceeds | ai-A:b1 | sin(x) | x | 0 | 6.283185307179586 | 1.5 ## (upper)
+a32l | true  | exceeds | ai-A:b1 | x*exp(-x) | x | 0 | 5 | 0.3678785 ## max of x e^-x on [0,5] is about 0.367879 (lower)
+a32u | false | exceeds | ai-A:b1 | x*exp(-x) | x | 0 | 5 | 0.3678795 ## (upper)
+a33l | true  | exceeds | ai-A:b1 | x**2*(4-x) | x | 0 | 4 | 9.481475 ## max of x^2(4-x) on [0,4] is about 9.48148 (lower)
+a33u | false | exceeds | ai-A:b1 | x**2*(4-x) | x | 0 | 4 | 9.481485 ## (upper)
+a34l | true  | exceeds | ai-A:b1 | x/(1+x**2) | x | 0 | 3 | 0.45 ## max of x/(1+x^2) on [0,3] is about 0.5 (lower)
+a34u | false | exceeds | ai-A:b1 | x/(1+x**2) | x | 0 | 3 | 0.55 ## (upper)
+# ---------------- ai-B: identities
+b01 | true | identity | ai-B:b1 | x**2-y**2 | (x-y)*(x+y) ## difference of squares
+b02 | true | identity | ai-B:b1 | x**3-y**3 | (x-y)*(x**2+x*y+y**2) ## difference of cubes
+b03 | true | identity | ai-B:b1 | x**3+y**3 | (x+y)*(x**2-x*y+y**2) ## sum of cubes
+b04 | true | identity | ai-B:b1 | sin(x)**2+cos(x)**2 | 1 ## Pythagorean identity
+b05 | true | identity | ai-B:b1 | tan(x)**2+1 | 1/cos(x)**2 ## tan^2 + 1 = sec^2
+b06 | true | identity | ai-B:b1 | 1+cos(x)**2/sin(x)**2 | 1/sin(x)**2 ## 1 + cot^2 = csc^2
+b07 | true | identity | ai-B:b1 | sin(2*x) | 2*sin(x)*cos(x) ## sine double angle
+b08 | true | identity | ai-B:b1 | cos(2*x) | cos(x)**2-sin(x)**2 ## cosine double angle
+b09 | true | identity | ai-B:b1 | sin(x+y) | sin(x)*cos(y)+cos(x)*sin(y) ## sine angle sum
+b10 | true | identity | ai-B:b1 | cos(x+y) | cos(x)*cos(y)-sin(x)*sin(y) ## cosine angle sum
+b11 | true | identity | ai-B:b1 | tan(x+y) | (tan(x)+tan(y))/(1-tan(x)*tan(y)) ## tangent angle sum
+# ---------------- ai-B: constants "to 10 decimal places" (CONVENTION: ai-B truncated; correct rounding differs)
+b12 | false | value | ai-B:b1 | pi | 3.1415926535 ## pi (CONVENTION: truncated; rounded is ...536)
+b13 | false | value | ai-B:b1 | exp(1) | 2.7182818284 ## e (CONVENTION: truncated; rounded is ...285)
+b14 | true  | value | ai-B:b1 | (1+sqrt(5))/2 | 1.6180339887 ## golden ratio
+b15 | false | value | ai-B:b1 | sqrt(2) | 1.4142135623 ## sqrt 2 (CONVENTION: truncated; rounded is ...624)
+# ---------------- ai-B: physics units
+b20 | true | dimensions | ai-B:b1 | F = m*a | {"F":"M L T^-2","m":"M","a":"L T^-2"} ## Newton's second law
+b21 | true | dimensions | ai-B:b1 | Ke = m*v**2/2 | {"Ke":"M L^2 T^-2","m":"M","v":"L T^-1"} ## kinetic energy
+b22 | true | dimensions | ai-B:b1 | F = G*m1*m2/r**2 | {"F":"M L T^-2","G":"M^-1 L^3 T^-2","m1":"M","m2":"M","r":"L"} ## universal gravitation
+b23 | true | dimensions | ai-B:b1 | V = Ic*Rr | {"V":"M L^2 T^-3 A^-1","Ic":"A","Rr":"M L^2 T^-3 A^-2"} ## Ohm's law (standard SI units)
+b24 | true | dimensions | ai-B:b1 | En = h*f | {"En":"M L^2 T^-2","h":"M L^2 T^-1","f":"T^-1"} ## Planck-Einstein
+b25 | true | dimensions | ai-B:b1 | Pp*Vo = nn*Rg*Tk | {"Pp":"M L^-1 T^-2","Vo":"L^3","nn":"mol","Rg":"M L^2 T^-2 mol^-1 K^-1","Tk":"K"} ## ideal gas law
+b26 | true | dimensions | ai-B:b1 | F = ke*q1*q2/r**2 | {"F":"M L T^-2","ke":"M L^3 T^-2 C^-2","q1":"C","q2":"C","r":"L"} ## Coulomb's law
+b27 | true | dimensions | ai-B:b1 | v = f*lam | {"v":"L T^-1","f":"T^-1","lam":"L"} ## wave speed
+b28 | true | dimensions | ai-B:b1 | En = m*c**2 | {"En":"M L^2 T^-2","m":"M","c":"L T^-1"} ## mass-energy equivalence
+b29 | true | dimensions | ai-B:b1 | ac = v**2/r | {"ac":"L T^-2","v":"L T^-1","r":"L"} ## centripetal acceleration
+# ---------------- ai-B: maxima
+b30l | true  | exceeds | ai-B:b1 | x*exp(-x) | x | 0 | 2 | 0.36787944115 ## max of x e^-x on [0,2] is about 0.3678794412 (lower)
+b30u | false | exceeds | ai-B:b1 | x*exp(-x) | x | 0 | 2 | 0.36787944125 ## (upper)
+b31l | true  | exceeds | ai-B:b1 | sin(x)+cos(x) | x | 0 | 3.141592653589793 | 1.41421356235 ## max of sin x + cos x on [0,pi] is about 1.4142135624 (lower)
+b31u | false | exceeds | ai-B:b1 | sin(x)+cos(x) | x | 0 | 3.141592653589793 | 1.41421356245 ## (upper)
+b32l | true  | exceeds | ai-B:b1 | x**3-3*x | x | -2 | 0 | 1.99999999995 ## max of x^3-3x on [-2,0] is about 2 (lower)
+b32u | false | exceeds | ai-B:b1 | x**3-3*x | x | -2 | 0 | 2.00000000005 ## (upper)
+b33l | true  | exceeds | ai-B:b1 | log(x)/x | x | 1 | 5 | 0.36787944115 ## max of ln x / x on [1,5] is about 0.3678794412 (lower)
+b33u | false | exceeds | ai-B:b1 | log(x)/x | x | 1 | 5 | 0.36787944125 ## (upper)
+b34l | true  | exceeds | ai-B:b1 | 2*x**3-9*x**2+12*x | x | 0 | 3 | 8.99999999995 ## max of 2x^3-9x^2+12x on [0,3] is about 9 (lower)
+b34u | false | exceeds | ai-B:b1 | 2*x**3-9*x**2+12*x | x | 0 | 3 | 9.00000000005 ## (upper)
+# ---------------- NOT EXTRACTED (outside the engine's claim kinds; recorded so exclusion is not cherry-picking)
+# ai-A, 4 claims: derivative of e^x; derivative of ln x; product rule; chain rule   (the engine has no derivative claims)
+# ai-A, 2 claims: Euler-Mascheroni constant; Catalan's constant                     (no named-constant support)
+# ai-A, 1 claim : c = 299 792 458 m/s                                               (an empirical constant, not mathematics)
+# ai-B, 4 claims: derivative of tan; derivative of sec; integration by parts; derivative of log base a
+# ai-B, 6 claims: Euler-Mascheroni, Catalan, zeta(3), Feigenbaum delta, Khinchin, Conway constants
+# Total: 16 of 80 stated math/physics claims (20%) outside scope, plus the c value.  Reported next to the result.
+
+# ================= BATCH 2 (adversarial) =================
+# ---------------- ai-C: identities listed as "subtly false"
+c01 | conditional | identity | ai-C:b2 | sqrt(x**2) | x ## sqrt(x^2) = x   (true only for x >= 0)
+c02 | conditional | identity | ai-C:b2 | log(x*y) | log(x)+log(y) ## ln(xy) = ln x + ln y   (true only for x,y > 0)
+c04 | false | identity | ai-C:b2 | cos(2*x) | 2*cos(x)**2+1 ## cos 2x = 2cos^2 x + 1
+c05 | false | identity | ai-C:b2 | sin(x+y) | sin(x)*cos(y)-cos(x)*sin(y) ## sin(x+y) with a minus sign
+c07 | false | identity | ai-C:b2 | tan(x)**2-1 | 1/cos(x)**2 ## tan^2 x - 1 = sec^2 x
+c09 | false | identity | ai-C:b2 | log(x-y) | log(x)/log(y) ## log(x-y) = log x / log y
+c10 | false | identity | ai-C:b2 | (x+y)**n | x**n+y**n ## (a+b)^n = a^n + b^n
+c11 | false | identity | ai-C:b2 | tan(x+y) | (tan(x)+tan(y))/(1+tan(x)*tan(y)) ## tan(x+y), wrong sign in the denominator
+c14 | false | identity | ai-C:b2 | x**(y**z) | (x**y)**z ## a^(b^c) = (a^b)^c
+c15 | false | identity | ai-C:b2 | sqrt(x+y) | sqrt(x)+sqrt(y) ## sqrt(a+b) = sqrt a + sqrt b
+# ---------------- ai-D: identities
+d01 | conditional | identity | ai-D:b2 | sqrt(x**2) | x ## sqrt(x^2) = x
+d02 | false | identity | ai-D:b2 | log(x+y) | log(x)+log(y) ## ln(a+b) = ln a + ln b
+d03 | false | identity | ai-D:b2 | sin(2*x) | 2*sin(x)*cos(x)+sin(x) ## sin 2x with an extra term
+d04 | false | identity | ai-D:b2 | cos(x-y) | cos(x)-cos(y) ## cos(a-b) = cos a - cos b
+d05 | true | identity | ai-D:b2 | tan(x+y) | (tan(x)+tan(y))/(1-tan(x)*tan(y)) ## tan(x+y)  (this one is CORRECT)
+d06 | true | identity | ai-D:b2 | (x+y)**3 | x**3+y**3+3*x*y*(x+y) ## (x+y)^3 expansion  (this one is CORRECT)
+d07 | false | identity | ai-D:b2 | 1/(x+y) | 1/x+1/y ## 1/(x+y) = 1/x + 1/y
+d08 | conditional | identity | ai-D:b2 | log(x*y)/log(a) | log(x)/log(a)+log(y)/log(a) ## log_a(xy) = log_a x + log_a y  (true for x,y > 0)
+d09 | false | identity | ai-D:b2 | exp(x+y) | exp(x)+exp(y) ## e^(x+y) = e^x + e^y
+d15 | false | identity | ai-D:b2 | 1/(1+tan(x)**2) | 1/cos(x)**2 ## 1/(1+tan^2 x) = sec^2 x
+# ---------------- ai-C: physics units
+c20 | true  | dimensions | ai-C:b2 | p = m*v/sqrt(1-v/c) | {"p":"M L T^-1","m":"M","v":"L T^-1","c":"L T^-1"} ## relativistic momentum with v/c (units fine; physics needs v^2/c^2)
+c21 | false | dimensions | ai-C:b2 | En = Qc**2/(2*Cp**2) | {"En":"M L^2 T^-2","Qc":"A T","Cp":"A^2 T^4 M^-1 L^-2"} ## capacitor energy Q^2/(2C^2)
+c22 | false | dimensions | ai-C:b2 | Tp = 2*pi*sqrt(g/L) | {"Tp":"T","g":"L T^-2","L":"L"} ## pendulum period with g/L inverted
+c23 | false | dimensions | ai-C:b2 | P = sg*Ar*Tk**3 | {"P":"M L^2 T^-3","sg":"M T^-3 K^-4","Ar":"L^2","Tk":"K"} ## Stefan-Boltzmann with T^3
+c24 | true  | dimensions | ai-C:b2 | Fm = qc*vv*Bf | {"Fm":"M L T^-2","qc":"A T","vv":"L T^-1","Bf":"M T^-2 A^-1"} ## F = q(v.B) read as magnitudes (units fine; error is dot vs cross)
+# ---------------- ai-D: physics units
+d20 | false | dimensions | ai-D:b2 | v = d/t**2 | {"v":"L T^-1","d":"L","t":"T"} ## v = d/t^2
+d21 | false | dimensions | ai-D:b2 | F = m*a**2 | {"F":"M L T^-2","m":"M","a":"L T^-2"} ## F = m a^2
+d22 | false | dimensions | ai-D:b2 | En = m*c | {"En":"M L^2 T^-2","m":"M","c":"L T^-1"} ## E = m c
+d23 | false | dimensions | ai-D:b2 | p = m*v**2 | {"p":"M L T^-1","m":"M","v":"L T^-1"} ## p = m v^2
+d24 | false | dimensions | ai-D:b2 | P = F*v**2 | {"P":"M L^2 T^-3","F":"M L T^-2","v":"L T^-1"} ## P = F v^2
+# ---------------- ai-C: maxima ("about X")
+c30l | false | exceeds | ai-C:b2 | x*exp(-x) | x | 0 | 5 | 0.375 ## max of x e^-x on [0,5] is about 0.38 (lower probe)
+c30u | false | exceeds | ai-C:b2 | x*exp(-x) | x | 0 | 5 | 0.385 ## (upper probe)
+c31l | false | exceeds | ai-C:b2 | sin(x)*cos(x) | x | 0 | 3.141592653589793 | 0.545 ## max of sin x cos x on [0,pi] is about 0.55 (lower)
+c31u | false | exceeds | ai-C:b2 | sin(x)*cos(x) | x | 0 | 3.141592653589793 | 0.555 ## (upper)
+c32l | false | exceeds | ai-C:b2 | x**3-3*x | x | -2 | 2 | 2.295 ## max of x^3-3x on [-2,2] is about 2.30 (lower)
+c32u | false | exceeds | ai-C:b2 | x**3-3*x | x | -2 | 2 | 2.305 ## (upper)
+c33l | true  | exceeds | ai-C:b2 | log(x)/x | x | 1 | 5 | 0.335 ## max of ln x / x on [1,5] is about 0.34 (lower)
+c33u | true  | exceeds | ai-C:b2 | log(x)/x | x | 1 | 5 | 0.345 ## (upper)
+c34l | false | exceeds | ai-C:b2 | x**2-x**4 | x | -1 | 1 | 0.275 ## max of x^2-x^4 on [-1,1] is about 0.28 (lower)
+c34u | false | exceeds | ai-C:b2 | x**2-x**4 | x | -1 | 1 | 0.285 ## (upper)
+# ---------------- ai-D: maxima
+d30l | false | exceeds | ai-D:b2 | x*exp(-x) | x | 0 | 5 | 0.375 ## max of x e^-x on [0,5] is about 0.38 (lower)
+d30u | false | exceeds | ai-D:b2 | x*exp(-x) | x | 0 | 5 | 0.385 ## (upper)
+d31l | true  | exceeds | ai-D:b2 | x*(4-x) | x | 0 | 4 | 3.85 ## max of x(4-x) on [0,4] is 3.9 (lower)
+d31u | true  | exceeds | ai-D:b2 | x*(4-x) | x | 0 | 4 | 3.95 ## (upper)
+d32l | true  | exceeds | ai-D:b2 | sin(x)+cos(x) | x | 0 | 1.5707963267948966 | 1.405 ## max of sin x + cos x on [0,pi/2] is about 1.41 (lower)
+d32u | false | exceeds | ai-D:b2 | sin(x)+cos(x) | x | 0 | 1.5707963267948966 | 1.415 ## (upper)
+d33l | false | exceeds | ai-D:b2 | x*exp(-2*x) | x | 0 | 40 | 0.185 ## max of x e^-2x for x>=0 is about 0.19 (lower)
+d33u | false | exceeds | ai-D:b2 | x*exp(-2*x) | x | 0 | 40 | 0.195 ## (upper)
+d34l | false | exceeds | ai-D:b2 | x/(1+x**2) | x | 0 | 100 | 0.505 ## max of x/(1+x^2) for x>=0 is about 0.51 (lower)
+d34u | false | exceeds | ai-D:b2 | x/(1+x**2) | x | 0 | 100 | 0.515 ## (upper)
+# ---------------- NOT EXTRACTED, batch 2 (outside the engine's claim kinds)
+# ai-C, 5 claims: derivative of a^x; integral of 1/x; derivative of a quotient (u/v); integral of f*g; arcsin(sin x) = x  (no asin)
+# ai-D, 5 claims: arcsin(sin x) = x; derivative of |x|; integral of 1/x; derivative of ln(x^2); integral of x^n
+# Batch 2 total: 10 of 50 stated claims outside scope.  Both batches: 26 of 130 (20%).

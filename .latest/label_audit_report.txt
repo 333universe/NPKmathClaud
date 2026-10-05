@@ -1,0 +1,129 @@
+id     file label  independent       basis
+a01    true        true         ok           24-point 60-digit numeric check
+a02    true        true         ok           24-point 60-digit numeric check
+a03    true        true         ok           24-point 60-digit numeric check
+a04    true        true         ok           24-point 60-digit numeric check
+a05    true        true         ok           24-point 60-digit numeric check
+a06    true        true         ok           24-point 60-digit numeric check
+a07    true        true         ok           24-point 60-digit numeric check
+a08a   true        true         ok           24-point 60-digit numeric check
+a08b   true        true         ok           24-point 60-digit numeric check
+a08c   true        true         ok           24-point 60-digit numeric check
+a09    true        true         ok           24-point 60-digit numeric check
+a10    true        true         ok           24-point 60-digit numeric check
+a11    true        true         ok           24-point 60-digit numeric check
+a12    true        true         ok           true value 3.1415926535898; rounded 3.1415926536; truncated 3.1415926535
+a13    true        true         ok           true value 2.718281828459; rounded 2.7182818285; truncated 2.7182818284
+a14    true        true         ok           true value 1.4142135623731; rounded 1.4142135624; truncated 1.4142135623
+a15    true        true         ok           true value 1.7320508075689; rounded 1.7320508076; truncated 1.7320508075
+a16    true        true         ok           true value 2.2360679774998; rounded 2.2360679775; truncated 2.2360679774
+a17    true        true         ok           true value 1.6180339887499; rounded 1.6180339887; truncated 1.6180339887
+a18    true        true         ok           true value 0.69314718055995; rounded 0.6931471806; truncated 0.6931471805
+a19    true        true         ok           true value 2.302585092994; rounded 2.3025850930; truncated 2.3025850929
+a20    true        true         ok           dim(lhs)/dim(rhs) = 1
+a21    true        true         ok           dim(lhs)/dim(rhs) = 1
+a22    true        true         ok           dim(lhs)/dim(rhs) = 1
+a23    true        true         ok           dim(lhs)/dim(rhs) = 1
+a24    true        true         ok           dim(lhs)/dim(rhs) = 1
+a25    true        true         ok           dim(lhs)/dim(rhs) = 1
+a26    true        true         ok           dim(lhs)/dim(rhs) = 1
+a27    true        true         ok           dim(lhs)/dim(rhs) = 1
+a28    true        true         ok           dim(lhs)/dim(rhs) = 1
+a29    true        true         ok           dim(lhs)/dim(rhs) = 1
+a30l   true        true         ok           max|f| = 25.0 vs c = 24.5
+a30u   false       false        ok           max|f| = 25.0 vs c = 25.5
+a31l   true        true         ok           max|f| = 1.0 vs c = 0.5
+a31u   false       false        ok           max|f| = 1.0 vs c = 1.5
+a32l   true        true         ok           max|f| = 0.3678794411714423 vs c = 0.3678785
+a32u   false       false        ok           max|f| = 0.3678794411714423 vs c = 0.3678795
+a33l   true        true         ok           max|f| = 9.481481481481481 vs c = 9.481475
+a33u   false       false        ok           max|f| = 9.481481481481481 vs c = 9.481485
+a34l   true        true         ok           max|f| = 0.5 vs c = 0.45
+a34u   false       false        ok           max|f| = 0.5 vs c = 0.55
+b01    true        true         ok           24-point 60-digit numeric check
+b02    true        true         ok           24-point 60-digit numeric check
+b03    true        true         ok           24-point 60-digit numeric check
+b04    true        true         ok           24-point 60-digit numeric check
+b05    true        true         ok           24-point 60-digit numeric check
+b06    true        true         ok           24-point 60-digit numeric check
+b07    true        true         ok           24-point 60-digit numeric check
+b08    true        true         ok           24-point 60-digit numeric check
+b09    true        true         ok           24-point 60-digit numeric check
+b10    true        true         ok           24-point 60-digit numeric check
+b11    true        true         ok           24-point 60-digit numeric check
+b12    false       false        ok           true value 3.1415926535898; rounded 3.1415926536; truncated 3.1415926535  [claim equals the TRUNCATED value]
+b13    false       false        ok           true value 2.718281828459; rounded 2.7182818285; truncated 2.7182818284  [claim equals the TRUNCATED value]
+b14    true        true         ok           true value 1.6180339887499; rounded 1.6180339887; truncated 1.6180339887
+b15    false       false        ok           true value 1.4142135623731; rounded 1.4142135624; truncated 1.4142135623  [claim equals the TRUNCATED value]
+b20    true        true         ok           dim(lhs)/dim(rhs) = 1
+b21    true        true         ok           dim(lhs)/dim(rhs) = 1
+b22    true        true         ok           dim(lhs)/dim(rhs) = 1
+b23    true        true         ok           dim(lhs)/dim(rhs) = 1
+b24    true        true         ok           dim(lhs)/dim(rhs) = 1
+b25    true        true         ok           dim(lhs)/dim(rhs) = 1
+b26    true        true         ok           dim(lhs)/dim(rhs) = 1
+b27    true        true         ok           dim(lhs)/dim(rhs) = 1
+b28    true        true         ok           dim(lhs)/dim(rhs) = 1
+b29    true        true         ok           dim(lhs)/dim(rhs) = 1
+b30l   true        true         ok           max|f| = 0.3678794411714423 vs c = 0.36787944115
+b30u   false       false        ok           max|f| = 0.3678794411714423 vs c = 0.36787944125
+b31l   true        true         ok           max|f| = 1.414213562373095 vs c = 1.41421356235
+b31u   false       false        ok           max|f| = 1.414213562373095 vs c = 1.41421356245
+b32l   true        true         ok           max|f| = 2.0 vs c = 1.99999999995
+b32u   false       false        ok           max|f| = 2.0 vs c = 2.00000000005
+b33l   true        true         ok           max|f| = 0.3678794411714423 vs c = 0.36787944115
+b33u   false       false        ok           max|f| = 0.3678794411714423 vs c = 0.36787944125
+b34l   true        true         ok           max|f| = 9.0 vs c = 8.99999999995
+b34u   false       false        ok           max|f| = 9.0 vs c = 9.00000000005
+c01    conditional conditional  ok           24-point 60-digit numeric check
+c02    conditional conditional  ok           24-point 60-digit numeric check
+c04    false       false        ok           24-point 60-digit numeric check
+c05    false       false        ok           24-point 60-digit numeric check
+c07    false       false        ok           24-point 60-digit numeric check
+c09    false       false        ok           24-point 60-digit numeric check
+c10    false       false        ok           24-point 60-digit numeric check
+c11    false       false        ok           24-point 60-digit numeric check
+c14    false       false        ok           24-point 60-digit numeric check
+c15    false       false        ok           24-point 60-digit numeric check
+d01    conditional conditional  ok           24-point 60-digit numeric check
+d02    false       false        ok           24-point 60-digit numeric check
+d03    false       false        ok           24-point 60-digit numeric check
+d04    false       false        ok           24-point 60-digit numeric check
+d05    true        true         ok           24-point 60-digit numeric check
+d06    true        true         ok           24-point 60-digit numeric check
+d07    false       false        ok           24-point 60-digit numeric check
+d08    conditional conditional  ok           24-point 60-digit numeric check
+d09    false       false        ok           24-point 60-digit numeric check
+d15    false       false        ok           24-point 60-digit numeric check
+c20    true        true         ok           dim(lhs)/dim(rhs) = 1
+c21    false       false        ok           dim(lhs)/dim(rhs) = BASE_A**2*BASE_T**4/(BASE_L**2*BASE_M)
+c22    false       false        ok           dim(lhs)/dim(rhs) = BASE_T**2
+c23    false       false        ok           dim(lhs)/dim(rhs) = BASE_K
+c24    true        true         ok           dim(lhs)/dim(rhs) = 1
+d20    false       false        ok           dim(lhs)/dim(rhs) = BASE_T
+d21    false       false        ok           dim(lhs)/dim(rhs) = BASE_T**2/BASE_L
+d22    false       false        ok           dim(lhs)/dim(rhs) = BASE_L/BASE_T
+d23    false       false        ok           dim(lhs)/dim(rhs) = BASE_T/BASE_L
+d24    false       false        ok           dim(lhs)/dim(rhs) = BASE_T/BASE_L
+c30l   false       false        ok           max|f| = 0.3678794411714423 vs c = 0.375
+c30u   false       false        ok           max|f| = 0.3678794411714423 vs c = 0.385
+c31l   false       false        ok           max|f| = 0.5 vs c = 0.545
+c31u   false       false        ok           max|f| = 0.5 vs c = 0.555
+c32l   false       false        ok           max|f| = 2.0 vs c = 2.295
+c32u   false       false        ok           max|f| = 2.0 vs c = 2.305
+c33l   true        true         ok           max|f| = 0.3678794411714423 vs c = 0.335
+c33u   true        true         ok           max|f| = 0.3678794411714423 vs c = 0.345
+c34l   false       false        ok           max|f| = 0.25 vs c = 0.275
+c34u   false       false        ok           max|f| = 0.25 vs c = 0.285
+d30l   false       false        ok           max|f| = 0.3678794411714423 vs c = 0.375
+d30u   false       false        ok           max|f| = 0.3678794411714423 vs c = 0.385
+d31l   true        true         ok           max|f| = 4.0 vs c = 3.85
+d31u   true        true         ok           max|f| = 4.0 vs c = 3.95
+d32l   true        true         ok           max|f| = 1.414213562373095 vs c = 1.405
+d32u   false       false        ok           max|f| = 1.414213562373095 vs c = 1.415
+d33l   false       false        ok           max|f| = 0.1839397205857212 vs c = 0.185
+d33u   false       false        ok           max|f| = 0.1839397205857212 vs c = 0.195
+d34l   false       false        ok           max|f| = 0.5 vs c = 0.505
+d34u   false       false        ok           max|f| = 0.5 vs c = 0.515
+
+126 claims audited; 0 label mismatch(es).

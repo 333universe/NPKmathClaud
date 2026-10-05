@@ -1,0 +1,14 @@
+# real_claims_template.txt  - copy to claims.txt, DELETE the EX lines, add your claims.
+# Format:  id | label | kind | source | args...   ## original wording
+# label = what an INDEPENDENT calculation or reference says: true | false | conditional
+# source = where the claim came from, e.g.  gemini:2026-10-05  copilot:q3  textbook:stewart  user:own
+# Include claims you suspect are wrong. Do not pick only claims you expect the engine to pass.
+EX1 | true  | identity    | example | sin(2*x) | 2*sin(x)*cos(x) ## double-angle formula
+EX2 | false | identity    | example | (x+y)**2 | x**2+y**2 ## a common mistake
+EX3 | conditional | identity | example | log(x**2) | 2*log(x) ## only true for x>0
+EX4 | true  | value       | example | pi | 3.14159265 ## pi to 8 decimals
+EX5 | false | value       | example | exp(1) | 2.71829 ## e, last digit wrong
+EX6 | true  | dimensions  | example | En = m*v**2/2 | {"En":"M L^2 T^-2","m":"M","v":"L T^-1"} ## kinetic energy
+EX7 | false | dimensions  | example | En = m*v | {"En":"M L^2 T^-2","m":"M","v":"L T^-1"} ## wrong units
+EX8 | true  | exceeds     | example | x*exp(-x) | x | 0 | 10 | 0.36 ## max of x e^-x is 0.3679
+EX9 | false | coincidence | example | 6.0 | 6.02 | 2*3 ## numerology
