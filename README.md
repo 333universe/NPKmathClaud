@@ -11,7 +11,15 @@
 NPKMath is a production-ready, verifiable knowledge verification engine that treats mathematical and scientific claims as executable objects. It uses symbolic (sympy), high-precision numeric (mpmath 120+ digits), and interval arithmetic engines, backed by a Bayesian SourceLedger for reliability scoring.
 
 In a live sandbox session on October 5 2026 (14:48 CDT), NPKMath processed 47 claims with **94.7% reliability**, achieved a **98.4% red-team pass rate**, and ran a fully autonomous **closed-loop self-improvement agent**. The agent auto-generates, verifies, and submits only accepted claims back into Grok’s context window and synthetic data pipeline — the exact mechanism required to make verifiable self-improvement a native, standard capability for Grok and future frontier models.
-
+User Prompt / Claim Generator
+       ↓
+NPKMath Agent Loop
+       ↓
+NKPMath Core (sympy + mpmath + sieve + Ledger)
+       ↓
+Verdict (PROVED/VERIFIED/REFUTED + reliability score)
+       ↓
+Synthetic Data Buffer + Grok Context Update
 This proposal outlines the complete 12-step professionalization plan (all already executed) and a 30-day integration roadmap to embed NPKMath as Grok’s official reasoning layer.
 
 ### Core Capabilities
@@ -51,3 +59,13 @@ In the current session the agent loop has:
 **Week 4** – Full rollout as optional reasoning plugin + public leaderboard
 
 ### Technical Architecture
+
+User Prompt / Claim Generator
+       ↓
+NPKMath Agent Loop
+       ↓
+NKPMath Core (sympy + mpmath + sieve + Ledger)
+       ↓
+Verdict (PROVED/VERIFIED/REFUTED + reliability score)
+       ↓
+Synthetic Data Buffer + Grok Context Update
